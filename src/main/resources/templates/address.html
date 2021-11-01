@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Адресы</title>
+</head>
+<body>
+<div th:switch="${address}">
+    <h2 th:case="null">No users found!</h2>
+    <div th:case="*">
+        <h2>Список сотрудников</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Фамилия</th>
+                <th>Имя</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="addr : ${address}">
+                <td th:text="${addr.address_id}"></td>
+                <td th:text="${addr.last_name}"></td>
+                <td th:text="${addr.first_name}"></td>
+                <td th:text="${addr.email}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
