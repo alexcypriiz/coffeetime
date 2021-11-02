@@ -16,16 +16,16 @@ public class Address {
 
     private int address_id;
 
-    @NotEmpty(message = "First name should not be empty")
-    @Size(min = 2, max = 30, message = "First name should not be between 2 and 30 characters")
+    @NotEmpty(message = "Имя не должно быть пустым")
+    @Size(min = 2, max = 30, message = "Имя должно содержать от 2 до 30 символов")
     private String first_name;
 
-    @NotEmpty(message = "Last name should not be empty")
-    @Size(min = 2, max = 30, message = "Last name should not be between 2 and 30 characters")
+    @NotEmpty(message = "Фамилия не должна быть пустой")
+    @Size(min = 2, max = 30, message = "Фамилия должна содержать от 2 до 30 символов")
     private String last_name;
 
-    @NotEmpty(message = "Email should not be empty")
-    @Email(message = "Email should be valid")
+    @NotEmpty(message = "Email не должен быть пустым")
+    @Email(message = "Укажите действительную почту")
     private String email;
 
     public Address() {
