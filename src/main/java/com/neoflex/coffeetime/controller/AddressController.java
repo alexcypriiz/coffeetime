@@ -61,4 +61,9 @@ public class AddressController {
         return "redirect:/address";
     }
 
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") int id) {
+        addrDAO.delete(id);
+        return "redirect:/address";
+    }
 }

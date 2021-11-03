@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Адресы</title>
+    <title>Адреса</title>
 </head>
 <body>
 <div th:switch="${address}">
@@ -25,11 +25,12 @@
                 <td th:text="${addr.first_name}"></td>
                 <td th:text="${addr.email}"></td>
                 <td><a th:href="@{address/update/{id}(id=${addr.address_id})}">Изменить</a></td>
+                <td><a th:href="@{address/delete/{id}(id=${addr.address_id})}">Удалить</a></td>
             </tr>
             </tbody>
         </table>
     </div>
-    <p><a href="/address/create">Добавить клиента</a></p>
+    <p><a href="/address/create">Добавить нового клиента</a></p>
 </div>
 </body>
 </html>
