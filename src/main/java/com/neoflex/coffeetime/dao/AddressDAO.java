@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
@@ -21,26 +22,28 @@ public class AddressDAO implements InterfaceAddressDAO {
 
     @Override
     public List<Address> getAll() {
-        return jdbcTemplate.query("SELECT * FROM ADDRESS", new BeanPropertyRowMapper<>(Address.class));
+        return jdbcTemplate.query("SELECT * FROM ADDRESS ORDER BY address_id", new BeanPropertyRowMapper<>(Address.class));
     }
 
     @Override
-    public void save(Address address) {
-
+    public void update(int id, Address updateAddress) {
+        jdbcTemplate.update("UPDATE ADDRESS SET first_name=?, last_name=?, email=? WHERE address_id=?",updateAddress.getFirst_name(),
+                updateAddress.getLast_name(), updateAddress.getEmail(), id);
     }
 
     @Override
-    public void update(Address address, int id) {
-
+    public void insert(Address address) {
+        jdbcTemplate.update("INSERT INTO ADDRESS VALUES(?, ?, ?, ?)", address.getAddress_id(), address.getFirst_name(),
+                address.getLast_name(), address.getEmail());
     }
 
     @Override
     public void delete(int id) {
-
+        jdbcTemplate.update("DELETE FROM ADDRESS WHERE address_id=?", id);
     }
 
     @Override
-    public void getById(int id) {
-
+    public Address getById(int id) {
+        return jdbcTemplate.query("SELECT * FROM ADDRESS WHERE address_id=?", new Object[]{id}, new BeanPropertyRowMapper<>(Address.class)).stream().findAny().orElse(null);
     }
 }
