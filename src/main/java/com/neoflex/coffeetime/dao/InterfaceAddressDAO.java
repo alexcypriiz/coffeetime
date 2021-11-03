@@ -11,6 +11,6 @@ public interface InterfaceAddressDAO {
     void insert(Address address);
     void update(int id, Address address);
     void delete(int id);
-    void getById(int id);
+    Address getById(int id);
     List<Address> getAll();
 }

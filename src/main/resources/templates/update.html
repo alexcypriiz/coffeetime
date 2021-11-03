@@ -2,16 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Добавление клиента</title>
+    <title>Изменение клиента</title>
 </head>
 <body>
-<h2>Добавление клиента</h2>
-<form th:method="POST" th:action="@{/address}" th:object="${address}">
-    <label for="address_id">Введите id: </label>
-    <input type="text" th:field="*{address_id}" id="address_id" />
-    <div style="color:red" th:if="${#fields.hasErrors('address_id')}" th:errors="*{address_id}">Неправильный id</div>
-    <br/>
-
+<h2>Изменение клиента</h2>
+<form th:action="@{/address/{id}(id=${address.address_id})}" th:object="${address}" method="post">
     <label for="last_name">Введите фамилию: </label>
     <input type="text" th:field="*{last_name}" id="last_name" />
     <div style="color:red" th:if="${#fields.hasErrors('last_name')}" th:errors="*{last_name}">Неправильная фамилия</div>
@@ -26,7 +21,7 @@
     <input type="text" th:field="*{email}" id="email" />
     <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Нерпавильный email</div>
     <br/>
-    <input type="submit" value="Добавить!"/>
+    <input type="submit" value="Изменить!"/>
 </form>
 </body>
 </html>

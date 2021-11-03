@@ -22,12 +22,12 @@ public class AddressDAO implements InterfaceAddressDAO {
 
     @Override
     public List<Address> getAll() {
-        return jdbcTemplate.query("SELECT * FROM ADDRESS", new BeanPropertyRowMapper<>(Address.class));
+        return jdbcTemplate.query("SELECT * FROM ADDRESS ORDER BY address_id", new BeanPropertyRowMapper<>(Address.class));
     }
 
     @Override
     public void update(int id, Address updateAddress) {
-        jdbcTemplate.update("UPDATE ADDRESS SET first_name=?, last_name=?, email=? WHERE id=?",updateAddress.getFirst_name(),
+        jdbcTemplate.update("UPDATE ADDRESS SET first_name=?, last_name=?, email=? WHERE address_id=?",updateAddress.getFirst_name(),
                 updateAddress.getLast_name(), updateAddress.getEmail(), id);
     }
 
@@ -39,11 +39,11 @@ public class AddressDAO implements InterfaceAddressDAO {
 
     @Override
     public void delete(int id) {
-        jdbcTemplate.update("DELETE FROM ADDRESS WHERE id=?", id);
+        jdbcTemplate.update("DELETE FROM ADDRESS WHERE address_id=?", id);
     }
 
     @Override
-    public void getById(int id) {
-
+    public Address getById(int id) {
+        return jdbcTemplate.query("SELECT * FROM ADDRESS WHERE address_id=?", new Object[]{id}, new BeanPropertyRowMapper<>(Address.class)).stream().findAny().orElse(null);
     }
 }

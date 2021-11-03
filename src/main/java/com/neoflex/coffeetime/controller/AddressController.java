@@ -44,4 +44,21 @@ public class AddressController {
         addrDAO.insert(address);
         return "redirect:/address";
     }
+
+    @GetMapping("/update/{id}")
+    public String edit(Model model, @PathVariable("id") int id) {
+        model.addAttribute("address", addrDAO.getById(id));
+        return "/update";
+    }
+
+    @PostMapping("/{id}")
+    public String update(@ModelAttribute("address") @Valid Address address, BindingResult bindingResult,
+                         @PathVariable("id") int id) {
+        if (bindingResult.hasErrors()) {
+            return "/update";
+        }
+        addrDAO.update(id, address);
+        return "redirect:/address";
+    }
+
 }

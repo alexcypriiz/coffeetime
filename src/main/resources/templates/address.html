@@ -24,6 +24,7 @@
                 <td th:text="${addr.last_name}"></td>
                 <td th:text="${addr.first_name}"></td>
                 <td th:text="${addr.email}"></td>
+                <td><a th:href="@{address/update/{id}(id=${addr.address_id})}">Изменить</a></td>
             </tr>
             </tbody>
         </table>
