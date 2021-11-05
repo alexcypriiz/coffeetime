@@ -4,7 +4,8 @@ spring:
     url: 'jdbc:oracle:thin:@localhost:49154:ORCLCDB'
     username: cypriiz
     password: cypriiz
-    driver.class-name: 'oracle.jdbc.OracleDriver'
+    driver:
+      class-name: 'oracle.jdbc.OracleDriver'
 
 ### Gmail connection setting
   mail:
