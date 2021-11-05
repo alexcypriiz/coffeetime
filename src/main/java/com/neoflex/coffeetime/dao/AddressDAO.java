@@ -1,11 +1,9 @@
 package com.neoflex.coffeetime.dao;
 
 import com.neoflex.coffeetime.model.Address;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
@@ -26,6 +24,11 @@ public class AddressDAO implements InterfaceAddressDAO {
     }
 
     @Override
+    public List<String> getAllEmail() {
+        return jdbcTemplate.queryForList("SELECT email FROM ADDRESS", String.class);
+    }
+
+    @Override
     public void update(int id, Address updateAddress) {
         jdbcTemplate.update("UPDATE ADDRESS SET first_name=?, last_name=?, email=? WHERE address_id=?",updateAddress.getFirst_name(),
                 updateAddress.getLast_name(), updateAddress.getEmail(), id);
@@ -33,8 +36,8 @@ public class AddressDAO implements InterfaceAddressDAO {
 
     @Override
     public void insert(Address address) {
-        jdbcTemplate.update("INSERT INTO ADDRESS VALUES(?, ?, ?, ?)", address.getAddress_id(), address.getFirst_name(),
-                address.getLast_name(), address.getEmail());
+        jdbcTemplate.update("INSERT INTO ADDRESS VALUES(?, ?, ?, ?)", address.getAddress_id(), address.getLast_name(),
+                address.getFirst_name(), address.getEmail());
     }
 
     @Override

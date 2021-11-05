@@ -1,6 +1,21 @@
-## Oracle settings
-spring.datasource.url: 'jdbc:oracle:thin:@localhost:49154:ORCLCDB'
-spring.datasource.username: cypriiz
-spring.datasource.password: cypriiz
-spring.datasource.driver.class-name: 'oracle.jdbc.OracleDriver'
+### OracleDB connection settings
+spring:
+  datasource:
+    url: 'jdbc:oracle:thin:@localhost:49154:ORCLCDB'
+    username: cypriiz
+    password: cypriiz
+    driver.class-name: 'oracle.jdbc.OracleDriver'
 
+### Gmail connection setting
+  mail:
+    host: smtp.gmail.com
+    username: coffeetimeneoflex@gmail.com
+    password: neoflex123
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    protocol: smtp
