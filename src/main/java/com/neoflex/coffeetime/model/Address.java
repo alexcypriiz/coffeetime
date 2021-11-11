@@ -30,4 +30,7 @@ public class Address {
 
     public Address() {
     }
+
+    public Address(String first_name, String email) {
+    }
 }

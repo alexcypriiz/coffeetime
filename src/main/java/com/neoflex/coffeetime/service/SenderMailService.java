@@ -1,5 +1,7 @@
 package com.neoflex.coffeetime.service;
 
+import com.neoflex.coffeetime.dao.AddressDAO;
+import com.neoflex.coffeetime.model.Address;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -12,21 +14,25 @@ import java.util.List;
  */
 @Service
 public class SenderMailService {
+    final
+    AddressDAO addressDAO;
 
     final
     JavaMailSender javaMailSender;
 
-    public SenderMailService(JavaMailSender javaMailSender) {
+    public SenderMailService(AddressDAO addressDAO, JavaMailSender javaMailSender) {
+        this.addressDAO = addressDAO;
         this.javaMailSender = javaMailSender;
     }
 
-    public void send(List<String> emailList) throws Exception {
+    public void send() throws Exception {
+        List<Address> addresses = addressDAO.getAll();
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper contentMessage = new MimeMessageHelper(message, true);
-        for (String email : emailList) {
-            contentMessage.setTo(email);
-            contentMessage.setText("<html><body><h1>Ержан, пора пить чай!</h1><body></html>", true);
-            contentMessage.setSubject("Чаепитие");
+        for (Address address : addresses) {
+            contentMessage.setTo(address.getEmail());
+            contentMessage.setText(address.getFirst_name() +" <html><body><h1>, пора пить кофе!</h1><body></html>", true);
+            contentMessage.setSubject("Кофепитие");
             javaMailSender.send(message);
         }
     }
