@@ -13,5 +13,4 @@ public interface InterfaceAddressDAO {
     void delete(int id);
     Address getById(int id);
     List<Address> getAll();
-    List<String> getAllEmail();
 }
