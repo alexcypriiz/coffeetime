@@ -6,6 +6,7 @@ import com.neoflex.coffeetime.service.SenderMailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+
 /**
  * Created by Alexey Podlubnyy on 21.10.2021
  */

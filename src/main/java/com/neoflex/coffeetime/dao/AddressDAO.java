@@ -24,6 +24,11 @@ public class AddressDAO implements InterfaceAddressDAO {
     }
 
     @Override
+    public List<String> getAllEmail() {
+        return jdbcTemplate.queryForList("SELECT email FROM ADDRESS", String.class);
+    }
+
+    @Override
     public void update(int id, Address updateAddress) {
         jdbcTemplate.update("UPDATE ADDRESS SET first_name=?, last_name=?, email=? WHERE address_id=?",updateAddress.getFirst_name(),
                 updateAddress.getLast_name(), updateAddress.getEmail(), id);
