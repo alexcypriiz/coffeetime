@@ -1,6 +1,5 @@
 package com.neoflex.coffeetime.controller;
 
-import com.neoflex.coffeetime.dao.AddressDAO;
 import com.neoflex.coffeetime.quartz.ScheduleCoffeeTime;
 import com.neoflex.coffeetime.service.SenderMailService;
 import org.springframework.stereotype.Controller;

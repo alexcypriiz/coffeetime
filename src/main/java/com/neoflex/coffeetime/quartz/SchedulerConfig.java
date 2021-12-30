@@ -34,7 +34,7 @@ public class SchedulerConfig {
     @Bean
     public Trigger scheduleTrigger() {
         return newTrigger().withIdentity("trigger").forJob(scheduleJob()).
-                withSchedule(CronScheduleBuilder.cronSchedule("0 0 19 ? * *")
+                withSchedule(CronScheduleBuilder.cronSchedule("0 00 19 ? * *")
                         .inTimeZone(TimeZone.getTimeZone("Europe/Saratov")))
                 .modifiedByCalendar("holidays")
                 .build();
@@ -45,7 +45,6 @@ public class SchedulerConfig {
         HolidayCalendar holidayCalendar = new HolidayCalendar();
         return buffReaderHolidayCalendar(holidayCalendar);
     }
-
 
     public HolidayCalendar buffReaderHolidayCalendar(HolidayCalendar holidayCalendar) {
         String year;
@@ -69,7 +68,6 @@ public class SchedulerConfig {
                         while (mDays.find()) {
                             day = mDays.group();
                             holidayCalendar.addExcludedDate(new SimpleDateFormat("yyyy/MM/dd").parse(year + "/" + countMonths + "/" + day)); // add date
-                            System.out.println(year + "/" + countMonths + "/" + day);
                         }
                     }
                 }
@@ -101,7 +99,7 @@ public class SchedulerConfig {
 //                .forJob(scheduleJob())
 //                .withIdentity("myJobTrigger")
 //                .withSchedule(scheduleBuilder)
-//                .startAt(DateBuilder.dateOf(21, 50,0))
+//                .startAt(DateBuilder.dateOf(19, 0, 0))
 //                .modifiedByCalendar("holidays")
 //                .build();
 //    }
