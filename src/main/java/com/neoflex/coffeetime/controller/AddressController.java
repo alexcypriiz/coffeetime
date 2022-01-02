@@ -18,6 +18,7 @@ import java.util.List;
 @RequestMapping("/address")
 public class AddressController {
     private final AddressDAO addrDAO;
+
     @Autowired
     public AddressController(AddressDAO addrDAO) {
         this.addrDAO = addrDAO;
@@ -25,9 +26,9 @@ public class AddressController {
 
     @GetMapping()
     public String getAddress(Model model) {
-            List<Address> listAddress = addrDAO.getAll();
-            model.addAttribute("address", listAddress);
-            return "address";
+        List<Address> listAddress = addrDAO.getAll();
+        model.addAttribute("address", listAddress);
+        return "address";
     }
 
     @GetMapping("/create")

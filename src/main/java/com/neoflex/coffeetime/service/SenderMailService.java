@@ -31,7 +31,7 @@ public class SenderMailService {
         MimeMessageHelper contentMessage = new MimeMessageHelper(message, true);
         for (Address address : addresses) {
             contentMessage.setTo(address.getEmail());
-            contentMessage.setText("<html><body><h1>" + address.getFirst_name() +", пора пить кофе!</h1><body></html>", true);
+            contentMessage.setText("<html><body><h1>" + address.getFirst_name() + ", пора пить кофе!</h1><body></html>", true);
             contentMessage.setSubject("Кофепитие");
             javaMailSender.send(message);
         }

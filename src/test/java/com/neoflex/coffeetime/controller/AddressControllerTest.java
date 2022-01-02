@@ -48,8 +48,8 @@ class AddressControllerTest {
 
         mockMvc.perform(MockMvcRequestBuilders.get("/address"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(view().name("address"))
                 .andExpect(MockMvcResultMatchers.model().attribute("address", Matchers.hasSize(3)));
+
     }
 
     @Test
