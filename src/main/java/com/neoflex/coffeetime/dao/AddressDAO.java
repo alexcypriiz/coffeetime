@@ -14,6 +14,9 @@ import java.util.List;
 public class AddressDAO implements InterfaceAddressDAO {
     private JdbcTemplate jdbcTemplate;
 
+    public AddressDAO() {
+    }
+
     public AddressDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
@@ -30,7 +33,7 @@ public class AddressDAO implements InterfaceAddressDAO {
 
     @Override
     public void update(int id, Address updateAddress) {
-        jdbcTemplate.update("UPDATE ADDRESS SET first_name=?, last_name=?, email=? WHERE address_id=?",updateAddress.getFirst_name(),
+        jdbcTemplate.update("UPDATE ADDRESS SET first_name=?, last_name=?, email=? WHERE address_id=?", updateAddress.getFirst_name(),
                 updateAddress.getLast_name(), updateAddress.getEmail(), id);
     }
 

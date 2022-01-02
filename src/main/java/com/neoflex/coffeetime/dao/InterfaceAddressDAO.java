@@ -9,9 +9,14 @@ import java.util.List;
  */
 public interface InterfaceAddressDAO {
     void insert(Address address);
+
     void update(int id, Address address);
+
     void delete(int id);
+
     Address getById(int id);
+
     List<Address> getAll();
+
     List<String> getAllEmail();
 }

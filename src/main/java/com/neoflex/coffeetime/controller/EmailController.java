@@ -11,14 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class EmailController {
-    final
-    ScheduleCoffeeTime scheduleCoffeeTime;
 
     final
     SenderMailService senderMailService;
 
     public EmailController(ScheduleCoffeeTime scheduleCoffeeTime, SenderMailService senderMailService) {
-        this.scheduleCoffeeTime = scheduleCoffeeTime;
         this.senderMailService = senderMailService;
     }
 

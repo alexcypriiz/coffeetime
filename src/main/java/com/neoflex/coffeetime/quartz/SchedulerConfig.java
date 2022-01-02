@@ -61,7 +61,7 @@ public class SchedulerConfig {
                 if (mYears.find()) {
                     int countMonths = 0;
                     year = mYears.group(0);
-                    while(mMonths.find()) {
+                    while (mMonths.find()) {
                         countMonths += 1;
                         month = mMonths.group();
                         Matcher mDays = patternDays.matcher(month);

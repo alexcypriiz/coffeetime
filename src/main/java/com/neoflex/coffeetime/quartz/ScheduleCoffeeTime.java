@@ -1,14 +1,9 @@
 package com.neoflex.coffeetime.quartz;
 
-import com.neoflex.coffeetime.dao.AddressDAO;
 import com.neoflex.coffeetime.service.SenderMailService;
 import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 import org.springframework.stereotype.Component;
-
-import java.util.Date;
-import java.util.List;
 
 
 /**

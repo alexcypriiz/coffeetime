@@ -1,6 +1,5 @@
 package com.neoflex.coffeetime.model;
 
-//import lombok.Data;
 import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.Email;
@@ -10,7 +9,6 @@ import javax.validation.constraints.Size;
 /**
  * Created by Alexey Podlubnyy on 21.10.2021
  */
-//@Data
 @Component
 public class Address {
 
