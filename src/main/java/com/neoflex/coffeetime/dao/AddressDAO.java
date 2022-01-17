@@ -14,9 +14,6 @@ import java.util.List;
 public class AddressDAO implements InterfaceAddressDAO {
     private JdbcTemplate jdbcTemplate;
 
-    public AddressDAO() {
-    }
-
     public AddressDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
