@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: oracledb
+  name: oracledb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oracledb
+  template:
+    metadata:
+      labels:
+        app: oracledb
+    spec:
+      containers:
+      - image: store/oracle/database-enterprise:12.2.0.1  
+        imagePullPolicy: Always
+        name: oracledb
+        ports:
+        - containerPort: 1521
+        volumeMounts:
+        - mountPath: /ORCL
+          name: oracle
+      imagePullSecrets:
+      - name: hub.docker
+      volumes:
+      - name: oracle
+        hostPath:
+          path: /oracle
+          type: Directory
+

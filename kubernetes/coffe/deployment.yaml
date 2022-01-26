@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: coffeetime
+  name: coffeetime
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: coffeetime
+  template:
+    metadata:
+      labels:
+        app: coffeetime
+    spec:
+      containers:
+      - image: cypriiz/coffeetime:latest 
+        imagePullPolicy: Always
+        name: coffeetime
+        ports:
+        - containerPort: 8080
+
